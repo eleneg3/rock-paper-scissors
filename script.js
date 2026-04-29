@@ -1,8 +1,8 @@
 function getComputerChoice() {
-    let number = Math.random() * 10;
-    if (number < 3) {
+    let number = Math.random();
+    if (number < 0.33) {
         return "rock"
-    } else if (3 < number < 6) {
+    } else if (number < 0.66) {
         return "paper"
     } else {
         return "scissors"
@@ -11,27 +11,32 @@ function getComputerChoice() {
 
 function getHumanChoice() {
     let answer = prompt("choose your option");
-    return answer;
+    if (answer === "rock" || answer === "paper" || answer === "scissors") {
+        return answer;
+    } else {
+        return prompt("please select either rock, paper or scissors")
+    }
 }
 
 let humanScore = 0;
 let computerScore = 0;
 
 function playRound(humanChoice, computerChoice) {
-    // getComputerChoice();
-    // getHumanChoice();
+    // if (humanChoice !== "rock" || humanChoice !== "paper" || humanChoice !== "scissors"){
+    //     return prompt("please select either rock, paper or scissors");
+    // } else 
     if (humanChoice === "rock" && computerChoice === "paper") {
         computerScore++
-        return "You lose! paper beats rock"
+        return console.log("You lose this round! paper beats rock")
     } else if (humanChoice === "paper" && computerChoice === "scissors") {
         computerScore++
-        return "You lose! scissors beats paper"
+        return console.log("You lose this round! scissors beats paper")
     } else if (humanChoice === "scissors" && computerChoice === "rock") {
         computerScore++
-        return "You lose! rock beats scissors"
+        return console.log("You lose this round! rock beats scissors")
     } else {
         humanScore++
-        return "Congratulations! you win"
+        return console.log("Congratulations! you win this round")
     }
 }
 
