@@ -1,3 +1,7 @@
+let rock = document.querySelector("#rock")
+let paper = document.querySelector("#paper")
+let scissors = document.querySelector("#scissors")
+
 function getComputerChoice() {
     let number = Math.random();
     if (number < 0.33) {
@@ -10,7 +14,7 @@ function getComputerChoice() {
 }
 
 function getHumanChoice() {
-    let answer = prompt("choose your option");
+    // let answer = prompt("choose your option");
     if (answer === "rock" || answer === "paper" || answer === "scissors") {
         return answer;
     } else {
@@ -22,9 +26,6 @@ let humanScore = 0;
 let computerScore = 0;
 
 function playRound(humanChoice, computerChoice) {
-    // if (humanChoice !== "rock" || humanChoice !== "paper" || humanChoice !== "scissors"){
-    //     return prompt("please select either rock, paper or scissors");
-    // } else 
     if (humanChoice === "rock" && computerChoice === "paper") {
         computerScore++
         return console.log("You lose this round! paper beats rock")
@@ -50,3 +51,7 @@ function playGame() {
         return `Sorry, you lose! your score is ${humanScore} and computers score is ${computerScore}`
     }
 }
+
+rock.addEventListener("click", () => playRound("rock", getComputerChoice()))
+paper.addEventListener("click", () => playRound("paper", getComputerChoice()))
+scissors.addEventListener("click", () => playRound("scissors", getComputerChoice()))
