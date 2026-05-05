@@ -1,6 +1,12 @@
-let rock = document.querySelector("#rock")
-let paper = document.querySelector("#paper")
-let scissors = document.querySelector("#scissors")
+const rock = document.querySelector("#rock")
+const paper = document.querySelector("#paper")
+const scissors = document.querySelector("#scissors")
+const results = document.querySelector("#results")
+const computerResultP = document.querySelector("#computer")
+const humanResultP = document.querySelector("#human")
+const humanCount = document.querySelector("#humanCount")
+const computerCount = document.querySelector("#computerCount")
+const afterGameText = document.querySelector("#afterGameText")
 
 function getComputerChoice() {
     let number = Math.random();
@@ -27,16 +33,24 @@ let computerScore = 0;
 
 function playRound(humanChoice, computerChoice) {
     if (humanChoice === "rock" && computerChoice === "paper") {
-        computerScore++
+        computerCount.textContent = `${++computerScore}`
+        humanCount.textContent = `${humanScore}`
+        afterGameText.textContent = "You lose this round! paper beats rock"
         return console.log("You lose this round! paper beats rock")
     } else if (humanChoice === "paper" && computerChoice === "scissors") {
-        computerScore++
+        computerCount.textContent = `${++computerScore}`
+        humanCount.textContent = `${humanScore}`
+        afterGameText.textContent = "You lose this round! scissors beats paper"
         return console.log("You lose this round! scissors beats paper")
     } else if (humanChoice === "scissors" && computerChoice === "rock") {
-        computerScore++
+        computerCount.textContent = `${++computerScore}`
+        humanCount.textContent = `${humanScore}`
+        afterGameText.textContent = "You lose this round! rock beats scissors"
         return console.log("You lose this round! rock beats scissors")
     } else {
-        humanScore++
+        humanCount.textContent = `${++humanScore}`
+        computerCount.textContent = `${computerScore}`
+        afterGameText.textContent = "Congratulations! you win this round"
         return console.log("Congratulations! you win this round")
     }
 }
